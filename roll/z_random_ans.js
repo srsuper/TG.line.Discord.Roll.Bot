@@ -18,7 +18,7 @@ try {
         return 'randomAns:hktrpg'
     }
     prefixs = function () {
-        return [/(^[.]ra(\d+|p|p\d+|)$)/ig,]
+        return [/(^[.]ra(\d+|p|p\d+|)$)/ig, ]
     }
     getHelpMessage = function () {
         return "【自定義回應功能】" + "\
@@ -184,7 +184,12 @@ try {
                                             rply.text += ' , ' + rply.randomAnsfunction[i].randomAnsfunction[a][(Math.floor(Math.random() * (rply.randomAnsfunction[i].randomAnsfunction[a].length - 1))) + 1];
                                         }
                                     }
-
+                                    /*
+                                    let res = rply.randomAnsfunction[i].randomAnsfunction[a].slice(1).sort(function () {
+                                                                                return 0.5 - Math.random();
+                                                                            });
+                                                                                                                rply.text += res.slice(a,times)
+                                    */
                                 }
                             }
                         }
@@ -226,30 +231,30 @@ try {
                         rply.text += ' 沒有自定義回應,至少兩個.'
                 }
                 return rply;
-            /* case /(^[.]rap(\d+|)$)/i.test(mainMsg[0]) && /^del$/i.test(mainMsg[1]) && /^\d+$/i.test(mainMsg[2]):
-                 //刪除自定義關鍵字
-                 if (mainMsg[2] && rply.randomAnsAllgroup) {
-                     for (var i = 0; i < rply.randomAnsAllgroup.length; i++) {
-                         if (mainMsg[2] < rply.randomAnsAllgroup[i].randomAnsAllgroup.length && mainMsg[2] >= 0) {
-                             let temp = rply.randomAnsAllgroup[i]
-                             temp.randomAnsAllgroup.splice(mainMsg[2], 1)
-                             //console.log('rply.randomAnsAllgroup: ', temp)
-                             records.setrandomAnsAllgroup('randomAnsAllgroup', temp, () => {
-                                 records.get('randomAnsAllgroup', (msgs) => {
-                                     rply.randomAnsAllgroup = msgs
+                /* case /(^[.]rap(\d+|)$)/i.test(mainMsg[0]) && /^del$/i.test(mainMsg[1]) && /^\d+$/i.test(mainMsg[2]):
+                     //刪除自定義關鍵字
+                     if (mainMsg[2] && rply.randomAnsAllgroup) {
+                         for (var i = 0; i < rply.randomAnsAllgroup.length; i++) {
+                             if (mainMsg[2] < rply.randomAnsAllgroup[i].randomAnsAllgroup.length && mainMsg[2] >= 0) {
+                                 let temp = rply.randomAnsAllgroup[i]
+                                 temp.randomAnsAllgroup.splice(mainMsg[2], 1)
+                                 //console.log('rply.randomAnsAllgroup: ', temp)
+                                 records.setrandomAnsAllgroup('randomAnsAllgroup', temp, () => {
+                                     records.get('randomAnsAllgroup', (msgs) => {
+                                         rply.randomAnsAllgroup = msgs
+                                     })
                                  })
-                             })
+                             }
+                             rply.text = '刪除成功: ' + mainMsg[2]
                          }
-                         rply.text = '刪除成功: ' + mainMsg[2]
-                     }
-                 } else {
-                     rply.text = '刪除失敗.'
-                     if (!mainMsg[2])
-                         rply.text += '沒有關鍵字. '
+                     } else {
+                         rply.text = '刪除失敗.'
+                         if (!mainMsg[2])
+                             rply.text += '沒有關鍵字. '
 
-                 }
-                 return rply;
-                 */
+                     }
+                     return rply;
+                     */
             case /(^[.]rap(\d+|)$)/i.test(mainMsg[0]) && /^show$/i.test(mainMsg[1]):
                 records.get('randomAnsAllgroup', (msgs) => {
                     rply.randomAnsAllgroup = msgs
