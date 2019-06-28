@@ -62,7 +62,10 @@ try {
   function RollDice(inputStr) {
     // 先把inputStr變成字串（不知道為什麼非這樣不可）
     let comStr = inputStr.toString()
-    let finalStr = '['
+    let finalStr = ''
+    if (comStr.split('d')[0] != 1)
+      finalStr = '['
+
     let temp = 0
     var totally = 0
     for (let i = 1; i <= comStr.split('d')[0]; i++) {
@@ -71,8 +74,12 @@ try {
       finalStr = finalStr + temp + '+'
     }
 
-    finalStr = finalStr.substring(0, finalStr.length - 1) + ']'
-    finalStr = finalStr.replace('[', totally + '[')
+
+    finalStr = finalStr.substring(0, finalStr.length - 1)
+    if (comStr.split('d')[0] != 1) {
+      finalStr += ']'
+      finalStr = finalStr.replace('[', totally + '[')
+    } else finalStr = totally + finalStr;
     return finalStr
   }
 
