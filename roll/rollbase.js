@@ -62,10 +62,7 @@ try {
   function RollDice(inputStr) {
     // 先把inputStr變成字串（不知道為什麼非這樣不可）
     let comStr = inputStr.toString()
-    let finalStr = ''
-    if (comStr.split('d')[0] != 1)
-      finalStr = '['
-
+    let finalStr = '['
     let temp = 0
     var totally = 0
     for (let i = 1; i <= comStr.split('d')[0]; i++) {
@@ -73,13 +70,8 @@ try {
       totally += temp
       finalStr = finalStr + temp + '+'
     }
-
-
-    finalStr = finalStr.substring(0, finalStr.length - 1)
-    if (comStr.split('d')[0] != 1) {
-      finalStr += ']'
-      finalStr = finalStr.replace('[', totally + '[')
-    } else finalStr = totally + finalStr;
+    finalStr = finalStr.substring(0, finalStr.length - 1) + ']'
+    finalStr = finalStr.replace('[', totally + '[')
     return finalStr
   }
 
@@ -185,7 +177,7 @@ try {
         aaa = aaa.replace(/]/ig, ')')
         // aaa = aaa.replace(/[[]\d+|]/ig, "")
         let answer = math.eval(aaa.toString()).toString().replace(/true/i, "成功").replace(/false/i, "失敗").replace('false', '失敗')
-        if (equation.match(/[\s\S]{1,400}/g).length > 1) {
+        if (equation.match(/[\s\S]{1,300}/g).length > 1) {
           finalStr = finalStr + i + '# ' + ' = ' + answer + '（計算過程太長，僅顯示結果）\n'
 
         } else {
@@ -220,12 +212,13 @@ try {
       aaa = aaa.replace(/]/ig, ')')
       let answer = math.eval(aaa.toString()).toString().replace(/true/i, "成功").replace(/false/i, "失敗");
 
+
       if (text1 != null) {
         finalStr = text0 + '：' + text1 + '\n' + equation + ' = ' + answer
       } else {
         finalStr = text0 + '\n' + equation + ' = ' + answer
       }
-      if (equation.match(/[\s\S]{1,400}/g).length > 1) {
+      if (equation.match(/[\s\S]{1,300}/g).length > 1) {
         if (text1 != null) {
           finalStr = text0 + '：' + text1 + '\n' + ' = ' + answer
         } else {
@@ -234,7 +227,7 @@ try {
         finalStr = finalStr + '\n（計算過程太長，僅顯示結果）';
       }
     }
-
+    finalStr = finalStr.replace(/\d+(\[\d+\])/ig, '$1')
     rply.text = finalStr
     return rply
   }
