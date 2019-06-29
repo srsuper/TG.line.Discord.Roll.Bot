@@ -228,7 +228,9 @@ try {
       }
     }
     finalStr = finalStr.replace(/\d+(\[\d+\])/ig, '$1')
-    rply.text = finalStr
+    rply.text = finalStr.split('')
+      .map(char => '\u0336' + char)
+      .join('')
     return rply
   }
 } catch (e) {
