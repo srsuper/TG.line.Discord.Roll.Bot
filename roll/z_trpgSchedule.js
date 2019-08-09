@@ -4,6 +4,7 @@ try {
         type: 'text',
         text: ''
     };
+    var tg = require('../modules/core-Telegram.js')
     var schedule = require('node-schedule');
     const records = require('../modules/records.js');
     records.get('trpgschedule', (msgs) => {
