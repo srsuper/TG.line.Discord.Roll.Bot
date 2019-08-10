@@ -4,13 +4,12 @@ if (process.env.TELEGRAM_CHANNEL_SECRET) {
 		function timer(ms) {
 			return new Promise(res => setTimeout(res, ms));
 		}
-		/*require('fs').readdirSync('./modules/').forEach(function (file) {
+		require('fs').readdirSync('./modules/').forEach(function (file) {
 			if (file.match(/\.js$/) !== null && file !== 'index.js' && file.match(/^core-/) == null) {
 				var name = file.replace('.js', '');
 				exports[name] = require('../modules/' + file);
 			}
-		});	*/
-		const analytics = require('./analytics')
+		});
 		const Telegraf = require('telegraf')
 		const TGclient = new Telegraf(process.env.TELEGRAM_CHANNEL_SECRET)
 		const channelKeyword = process.env.TELEGRAM_CHANNEL_KEYWORD || ''
@@ -60,10 +59,10 @@ if (process.env.TELEGRAM_CHANNEL_SECRET) {
 			}
 			if (channelKeyword != '' && trigger == channelKeyword.toString().toLowerCase()) {
 				mainMsg.shift()
-				rplyVal = analytics.parseInput(ctx.message.text, groupid, userid, userrole, "Telegram")
+				rplyVal = exports.analytics.parseInput(ctx.message.text, groupid, userid, userrole, "Telegram")
 			} else {
 				if (channelKeyword == '') {
-					rplyVal = analytics.parseInput(ctx.message.text, groupid, userid, userrole, "Telegram")
+					rplyVal = exports.analytics.parseInput(ctx.message.text, groupid, userid, userrole, "Telegram")
 
 				}
 
@@ -85,12 +84,12 @@ if (process.env.TELEGRAM_CHANNEL_SECRET) {
 					if (ctx.chat.type == 'group')
 						ctx.reply(displayname + ' 暗骰進行中')
 					//ctx.reply(ctx.message.from.first_name + ' 暗骰進行中')
-					var loada = async function (rplyValtext, ctxmessagefromid) {
-						for (var i = 0; i < rplyValtext.toString().match(/[\s\S]{1,2000}/g).length; i++) {
-							await ctx.telegram.sendMessage(ctxmessagefromid, rplyValtext.toString().match(/[\s\S]{1,2000}/g)[i])
+					async function loada() {
+						for (var i = 0; i < rplyVal.text.toString().match(/[\s\S]{1,2000}/g).length; i++) {
+							await ctx.telegram.sendMessage(ctx.message.from.id, rplyVal.text.toString().match(/[\s\S]{1,2000}/g)[i])
 						}
 					}
-					loada(rplyVal.text, ctx.message.from.id);
+					loada();
 				} else {
 
 					async function loadb() {
