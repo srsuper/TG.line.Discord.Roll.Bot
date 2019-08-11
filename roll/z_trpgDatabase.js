@@ -4,7 +4,7 @@ try {
         type: 'text',
         text: ''
     };
-    var tg = require('../modules/core-Telegram')
+   
     const records = require('../modules/records.js');
     records.get('trpgDatabase', (msgs) => {
         rply.trpgDatabasefunction = msgs
