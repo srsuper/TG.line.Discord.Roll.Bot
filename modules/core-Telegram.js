@@ -16,7 +16,7 @@ if (process.env.TELEGRAM_CHANNEL_SECRET) {
 		var TGcountroll = 0;
 		var TGcounttext = 0;
 		const telegrafGetChatMembers = require('telegraf-getchatmembers')
-
+		exports.TGclient = TGclient;
 		TGclient.use(telegrafGetChatMembers)
 
 		TGclient.on('text', async (ctx) => {

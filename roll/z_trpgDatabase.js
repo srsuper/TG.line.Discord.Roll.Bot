@@ -4,6 +4,7 @@ try {
         type: 'text',
         text: ''
     };
+    var tg = require('../modules/core-Telegram')
     const records = require('../modules/records.js');
     records.get('trpgDatabase', (msgs) => {
         rply.trpgDatabasefunction = msgs
@@ -18,7 +19,7 @@ try {
         return 'trpgDatabase:hktrpg'
     }
     prefixs = function () {
-        return [/(^[.]db(p|)$)/ig,]
+        return [/(^[.]db(p|)$)/ig, ]
     }
     getHelpMessage = function () {
         return "【資料庫功能】" + "\
@@ -48,7 +49,7 @@ try {
                 rply.text = this.getHelpMessage();
                 return rply;
 
-            // .DB(0) ADD(1) TOPIC(2) CONTACT(3)
+                // .DB(0) ADD(1) TOPIC(2) CONTACT(3)
             case /(^[.]db$)/i.test(mainMsg[0]) && /^add$/i.test(mainMsg[1]) && /^(?!(add|del|show)$)/ig.test(mainMsg[2]):
                 //增加資料庫
                 //檢查有沒有重覆
