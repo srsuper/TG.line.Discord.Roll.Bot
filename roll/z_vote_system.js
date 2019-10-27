@@ -17,7 +17,7 @@ try {
         return 'trpgPollSystem:hktrpg'
     }
     prefixs = function () {
-        return [/(^[.]Poll$)/ig, ]
+        return [/(^[.]Poll$)/ig,]
     }
     getHelpMessage = function () {
         return "【投票功能】" + "\
@@ -29,16 +29,12 @@ try {
         \n 可以給190字的意見\
         \n 15個選項\
         \n \
-        \n 輸入.Poll Vote  Doodle(N) Board (190字)  修改在這群組升級時彈出的升級語\
+        \n 輸入.Poll Vote單選  Doodle(N)多選 Board給意見 (190字)\
+        \n 修改在這群組升級時彈出的升級語\
         \n 輸入.Poll Hide (內容) 修改在這群組查詢等級時的回應\
         \n 輸入.Poll RankWord/PollUpWord del 即使用預設字句\
         \n 輸入.Poll RankWord/PollUpWord show 即顯示現在設定\
         \n 輸入.Poll show 可以查詢你現在的等級\
-        \n 修改內容可使用不同代碼\
-        \n {user.name} 名字 {user.Poll} 等級 \
-        \n {user.exp} 投票 {user.Ranking} 現在排名 \
-        \n {user.RankingPer} 現在排名百分比 \
-        \n {server.member_count} 現在頻道中總人數 \
         \n "
     }
     initialize = function () {
@@ -54,7 +50,7 @@ try {
                 if (botname == "Line")
                     rply.text += "\n因為Line的機制, 如擲骰時並無顯示用家名字, 請到下列網址,和機器人任意說一句話,成為好友. \n https://line.me/R/ti/p/svMLqy9Mik"
                 return rply;
-                // .Poll(0) PollUpWord(1) TOPIC(2) CONTACT(3)
+            // .Poll(0) PollUpWord(1) TOPIC(2) CONTACT(3)
             case /(^[.]Poll$)/i.test(mainMsg[0]) && /^PollUpWord$/i.test(mainMsg[1]):
                 //console.log('mainMsg: ', mainMsg)
                 //增加資料庫
@@ -123,11 +119,11 @@ try {
                     }
                 }
                 return rply;
-                //
-                //
-                //查詢語
-                //
-                //
+            //
+            //
+            //查詢語
+            //
+            //
             case /(^[.]Poll$)/i.test(mainMsg[0]) && /^RankWord$/i.test(mainMsg[1]):
                 //console.log('mainMsg: ', mainMsg)
                 //增加資料庫
@@ -197,11 +193,11 @@ try {
                 }
                 return rply;
 
-                //
-                //
-                //設定
-                //
-                //
+            //
+            //
+            //設定
+            //
+            //
             case /(^[.]Poll$)/i.test(mainMsg[0]) && /^config$/i.test(mainMsg[1]):
                 //console.log('mainMsg: ', mainMsg)
                 //增加資料庫
