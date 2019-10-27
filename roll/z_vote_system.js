@@ -11,7 +11,7 @@ try {
     })
 
     gameName = function () {
-        return '(公測中)經驗值功能 .Poll (show config PollUpWord RankWord)'
+        return '(公測中)投票功能 .Poll (show config PollUpWord RankWord)'
     }
     gameType = function () {
         return 'trpgPollSystem:hktrpg'
@@ -36,7 +36,7 @@ try {
         \n 輸入.Poll show 可以查詢你現在的等級\
         \n 修改內容可使用不同代碼\
         \n {user.name} 名字 {user.Poll} 等級 \
-        \n {user.exp} 經驗值 {user.Ranking} 現在排名 \
+        \n {user.exp} 投票 {user.Ranking} 現在排名 \
         \n {user.RankingPer} 現在排名百分比 \
         \n {server.member_count} 現在頻道中總人數 \
         \n "
@@ -287,13 +287,13 @@ try {
                 //1.    讀取 群組有沒有開啓功能
                 //2.    ->沒有 告知開啓
                 //3.    ->有   檢查有沒有個人資料
-                //4.    沒有則新增一個, 隨機1-10 給經驗值.
+                //4.    沒有則新增一個, 隨機1-10 給投票.
                 //5.    讀取群組的排名語
                 //6.    ->沒有 使用預設排名語
                 //7.    使用排名語, 根據內容進行替換.
                 //8.    
                 //{user.name} 名字 {user.Poll} 等級 \
-                // { user.exp } 經驗值 { user.Ranking } 現在排名 \
+                // { user.exp } 投票 { user.Ranking } 現在排名 \
                 // { user.RankingPer} 現在排名百分比 \
                 // { server.member_count } 現在頻道中總人數 \
 
@@ -303,7 +303,7 @@ try {
                     let tempHaveUser = 0;
                     //6.    ->沒有 使用預設排名語
                     //{user.name} 名字 {user.Poll} 等級 \
-                    // {user.exp} 經驗值 {user.Ranking} 現在排名 \
+                    // {user.exp} 投票 {user.Ranking} 現在排名 \
                     // {user.RankingPer} 現在排名百分比 \
                     // {server.member_count} 現在頻道中總人數 \
                     let rankWord = "@{user.name}，你的克蘇魯神話知識現在是 {user.Poll}點！現在排名第{user.Ranking}名！"
@@ -336,7 +336,7 @@ try {
                                             let userRankingPer = Math.ceil(userRanking / rply.trpgPollSystemfunction[i].trpgPollSystemfunction.length * 10000) / 100 + '%';
                                             let usermember_count = rply.trpgPollSystemfunction[i].trpgPollSystemfunction.length;
                                             //{user.name} 名字 {user.Poll} 等級 \
-                                            // { user.exp } 經驗值 { user.Ranking } 現在排名 \
+                                            // { user.exp } 投票 { user.Ranking } 現在排名 \
                                             // { user.RankingPer} 現在排名百分比 \
                                             // { server.member_count } 現在頻道中總人數 \
                                             if ((5 / 6 * (rply.trpgPollSystemfunction[i].trpgPollSystemfunction[a].Poll + 1) * (2 * (rply.trpgPollSystemfunction[i].trpgPollSystemfunction[a].Poll + 1) * (rply.trpgPollSystemfunction[i].trpgPollSystemfunction[a].Poll + 1) + 27 * (rply.trpgPollSystemfunction[i].trpgPollSystemfunction[a].Poll + 1) + 91)) <= rply.trpgPollSystemfunction[i].trpgPollSystemfunction[a].EXP) {
@@ -352,7 +352,7 @@ try {
 
                                     } //2.    ->沒有 告知開啓
                                     if (tempHaveUser == 0) {
-                                        //4.    沒有則新增一個, 隨機1-10 給經驗值.
+                                        //4.    沒有則新增一個, 隨機1-10 給投票.
                                         let username = displayname || "無名"
                                         let userPoll = 0;
                                         let userexp = Math.floor(Math.random() * 10) + 1
@@ -362,7 +362,7 @@ try {
                                         let userRankingPer = Math.ceil(userRanking / rply.trpgPollSystemfunction[i].trpgPollSystemfunction.length * 10000) / 100 + '%';
                                         let usermember_count = rply.trpgPollSystemfunction[i].trpgPollSystemfunction.length;
                                         //{user.name} 名字 {user.Poll} 等級 \
-                                        // { user.exp } 經驗值 { user.Ranking } 現在排名 \
+                                        // { user.exp } 投票 { user.Ranking } 現在排名 \
                                         // { user.RankingPer} 現在排名百分比 \
                                         // { server.member_count } 現在頻道中總人數 \
                                         rply.text = rankWord.replace(/{user.name}/ig, username).replace(/{user.Poll}/ig, userPoll).replace(/{user.exp}/ig, userexp).replace(/{user.Ranking}/ig, userRanking).replace(/{user.RankingPer}/ig, userRankingPer).replace(/{server.member_count}/ig, usermember_count)
