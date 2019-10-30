@@ -12,7 +12,7 @@ try {
         rply.trpgChooseAllgroup = msgs
     })
     gameName = function () {
-        return '(公測中)資料庫功能 .db(p) (add del show 自定關鍵字)'
+        return '(公測中)選擇圖書功能 .db(p) (add del show 自定關鍵字)'
     }
     gameType = function () {
         return 'trpgChoose:hktrpg'
@@ -21,7 +21,7 @@ try {
         return [/(^[.]db(p|)$)/ig, ]
     }
     getHelpMessage = function () {
-        return "【資料庫功能】" + "\
+        return "【選擇圖書功能】" + "\
         \n 這是根據關鍵字來顯示數據的,\
         \n 例如輸入 .db add 九大陣營 守序善良 (...太長省略) 中立邪惡 混亂邪惡 \
         \n 再輸入.db 九大陣營  守序善良 (...太長省略) 中立邪惡 混亂邪惡\
@@ -48,7 +48,7 @@ try {
 
                 // .DB(0) ADD(1) TOPIC(2) CONTACT(3)
             case /(^[.]db$)/i.test(mainMsg[0]) && /^add$/i.test(mainMsg[1]) && /^(?!(add|del|show)$)/ig.test(mainMsg[2]):
-                //增加資料庫
+                //增加選擇圖書
                 //檢查有沒有重覆
                 //if (!mainMsg[2]) return;
                 //if (!mainMsg[3]) return;
@@ -98,7 +98,7 @@ try {
                 return rply;
 
             case /(^[.]db$)/i.test(mainMsg[0]) && /^del$/i.test(mainMsg[1]) && /^all$/i.test(mainMsg[2]):
-                //刪除資料庫
+                //刪除選擇圖書
                 if (groupid && mainMsg[2] && rply.trpgChoosefunction && userrole >= 2) {
                     for (var i = 0; i < rply.trpgChoosefunction.length; i++) {
                         if (rply.trpgChoosefunction[i].groupid == groupid) {
@@ -122,7 +122,7 @@ try {
 
                 return rply;
             case /(^[.]db$)/i.test(mainMsg[0]) && /^del$/i.test(mainMsg[1]) && /^\d+$/i.test(mainMsg[2]):
-                //刪除資料庫
+                //刪除選擇圖書
                 if (groupid && mainMsg[2] && rply.trpgChoosefunction && userrole >= 1) {
                     for (var i = 0; i < rply.trpgChoosefunction.length; i++) {
                         if (rply.trpgChoosefunction[i].groupid == groupid && mainMsg[2] < rply.trpgChoosefunction[i].trpgChoosefunction.length && mainMsg[2] >= 0) {
@@ -159,7 +159,7 @@ try {
                     if (rply.trpgChoosefunction)
                         for (var i = 0; i < rply.trpgChoosefunction.length; i++) {
                             if (rply.trpgChoosefunction[i].groupid == groupid) {
-                                rply.text += '資料庫列表:'
+                                rply.text += '選擇圖書列表:'
                                 for (var a = 0; a < rply.trpgChoosefunction[i].trpgChoosefunction.length; a++) {
                                     temp = 1
                                     rply.text += ("\n") + a + '. ' + rply.trpgChoosefunction[i].trpgChoosefunction[a].topic
@@ -170,7 +170,7 @@ try {
                 } else {
                     rply.text = '不在群組. '
                 }
-                //顯示資料庫
+                //顯示選擇圖書
                 rply.text = rply.text.replace(/^([^(,)\1]*?)\s*(,)\s*/mg, '$1: ').replace(/\,/gm, ', ')
                 return rply
             case /(^[.]db$)/i.test(mainMsg[0]) && /\S/i.test(mainMsg[1]) && /^(?!(add|del|show)$)/ig.test(mainMsg[1]):
@@ -186,7 +186,7 @@ try {
                         for (var i = 0; i < rply.trpgChoosefunction.length; i++) {
                             if (rply.trpgChoosefunction[i].groupid == groupid) {
                                 // console.log(rply.trpgChoosefunction[i])
-                                //rply.text += '資料庫列表:'
+                                //rply.text += '選擇圖書列表:'
                                 for (var a = 0; a < rply.trpgChoosefunction[i].trpgChoosefunction.length; a++) {
                                     if (rply.trpgChoosefunction[i].trpgChoosefunction[a].topic.toLowerCase() == mainMsg[1].toLowerCase()) {
                                         temp = 1
@@ -248,14 +248,14 @@ try {
                 let tempshow = 0;
                 if (rply.trpgChooseAllgroup)
                     for (var i = 0; i < rply.trpgChooseAllgroup.length; i++) {
-                        rply.text += '資料庫列表:'
+                        rply.text += '選擇圖書列表:'
                         for (var a = 0; a < rply.trpgChooseAllgroup[i].trpgChooseAllgroup.length; a++) {
                             tempshow = 1
                             rply.text += ("\n") + a + '. ' + rply.trpgChooseAllgroup[i].trpgChooseAllgroup[a].topic
                         }
                     }
                 if (tempshow == 0) rply.text = '沒有已設定的關鍵字. '
-                //顯示資料庫
+                //顯示選擇圖書
                 rply.text = rply.text.replace(/^([^(,)\1]*?)\s*(,)\s*/mg, '$1: ').replace(/\,/gm, ', ')
                 return rply
             case /(^[.]dbp$)/i.test(mainMsg[0]) && /\S/i.test(mainMsg[0]) && /^(?!(add|del|show)$)/ig.test(mainMsg[1]):
