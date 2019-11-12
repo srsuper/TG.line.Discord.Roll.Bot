@@ -1,3 +1,6 @@
+//http://single9.net/2018/01/node-js-%e8%88%87-socket-io-%e5%8d%b3%e6%99%82%e8%81%8a%e5%a4%a9%e5%ae%a4%e5%af%a6%e4%bd%9c%e4%ba%8c/amp/
+//參考此網站製作
+//https://github.com/single9/simple-chat-room
 if (process.env.LINE_CHANNEL_ACCESSTOKEN) {
     const express = require('./core-Line').express;
     const www = require('./core-Line').app;
