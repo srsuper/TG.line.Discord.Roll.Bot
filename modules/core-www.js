@@ -38,8 +38,11 @@ if (process.env.LINE_CHANNEL_ACCESSTOKEN) {
         // 發送紀錄最大值
         socket.emit("maxRecord", records.getMax());
         // 發送紀錄
-        socket.emit("chatRecord", records.get());
 
+        records.get((msgs) => {
+            socket.emit("chatRecord", msgs);
+        });
+        
         socket.on("greet", () => {
             socket.emit("greet", onlineCount);
         });
@@ -51,6 +54,8 @@ if (process.env.LINE_CHANNEL_ACCESSTOKEN) {
             msg.msg = '\n' + msg.msg
             records.push(msg);
         });
+
+        
 
         socket.on('disconnect', () => {
             // 有人離線了，扣人
