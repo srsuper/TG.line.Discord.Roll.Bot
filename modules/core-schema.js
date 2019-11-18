@@ -103,6 +103,21 @@ if (process.env.mongoURL) {
         }]
     });
 
+    const trpgWWWRecord = mongoose.model('trpgWWWRecord', {
+        name: {
+            type: String,
+            required: true,
+        },
+        msg: {
+            type: String,
+            required: true,
+        },
+        time: {
+            type: Date,
+            required: true
+        }
+    });
+
 
     module.exports = {
         randomAns,
@@ -114,7 +129,8 @@ if (process.env.mongoURL) {
         trpgDatabase,
         trpgCommand,
         trpgLevelSystem,
-        trpgDarkRolling
+        trpgDarkRolling,
+        trpgWWWRecord
     }
     //const Cat = mongoose.model('Cat', { name: String });
     //const kitty = new Cat({ name: 'Zildjian' });
