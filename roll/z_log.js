@@ -43,6 +43,7 @@ rollDiceCommand = async function (inputStr, mainMsg, groupid, userid, userrole, 
 	}
 }
 /*
+https://stackoverflow.com/questions/49764610/send-buffer-for-file-in-discord-js
 
 https://ourcodeworld.com/articles/read/297/how-to-create-a-file-using-the-filesystem-fs-module-in-node-js
 
