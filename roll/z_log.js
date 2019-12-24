@@ -43,6 +43,11 @@ rollDiceCommand = async function (inputStr, mainMsg, groupid, userid, userrole, 
 	}
 }
 /*
+
+https://www.npmjs.com/package/fs-temp
+
+https://github.com/bruce/node-temp
+
 telegram.sendDocument(chatId, doc, [extra])
 sendPhoto
 sendAnimation
