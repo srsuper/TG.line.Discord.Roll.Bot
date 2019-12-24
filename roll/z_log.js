@@ -44,6 +44,8 @@ rollDiceCommand = async function (inputStr, mainMsg, groupid, userid, userrole, 
 }
 /*
 
+https://ourcodeworld.com/articles/read/297/how-to-create-a-file-using-the-filesystem-fs-module-in-node-js
+
 https://www.npmjs.com/package/fs-temp
 
 https://github.com/bruce/node-temp
