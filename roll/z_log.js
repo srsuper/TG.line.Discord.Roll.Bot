@@ -34,16 +34,24 @@ rollDiceCommand = async function (inputStr, mainMsg, groupid, userid, userrole, 
 		case /^help$/i.test(mainMsg[1]) || !mainMsg[1]:
 			rply.text = this.getHelpMessage();
 			return rply;
-		case /\S+/.test(mainMsg[1]) && /[.]wiki/.test(mainMsg[0]):
+		case /\S+/.test(mainMsg[1]) && /[.]log/.test(mainMsg[0]):
+			rply.type = "image"
 			rply.text = "A"
 			return rply;
-
-
 		default:
 			break;
 	}
 }
+/*
+var file = new Blob([enc_data], {type: 'text/plain'});
+var formData = new FormData();
+formData.append('chat_id', '<id>');
+formData.append('document', file);
 
+var request = new XMLHttpRequest();
+request.open('POST', 'https://api.telegram.org/bot<token>/sendDocument');
+request.send(FormData);
+*/
 
 module.exports = {
 	rollDiceCommand: rollDiceCommand,
