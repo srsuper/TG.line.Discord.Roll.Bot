@@ -43,6 +43,10 @@ rollDiceCommand = async function (inputStr, mainMsg, groupid, userid, userrole, 
 	}
 }
 /*
+telegram.sendDocument(chatId, doc, [extra])
+
+
+
 var file = new Blob([enc_data], {type: 'text/plain'});
 var formData = new FormData();
 formData.append('chat_id', '<id>');
