@@ -22,10 +22,10 @@ try {
     /*
 
 .ch add 的輸入格式,用來增建角色卡
-.ch add 角色名字
+.ch add name[Sad]
 state[HP:5 5;MP:3 3;SAN:50 99;護甲:6;]
 notes[筆記:SAD;心靈支柱: 特質]
-roll{投擲:cc 80 投擲;空手 cc 50;}
+roll[投擲:cc 80 投擲;空手 cc 50;]
 
 // state 可以進行增減
 // notes 文字筆記
