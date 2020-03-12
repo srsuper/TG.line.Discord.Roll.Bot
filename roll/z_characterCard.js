@@ -20,14 +20,24 @@ try {
         return [/(^[.]char$)/ig, ]
     }
     /*
-輸入格式
+
+.ch add 的輸入格式,用來增建角色卡
 .ch add 角色名字
 state[HP:5 5;MP:3;SAN:50 99;]
 notes[筆記:SAD;心靈支柱: 特質]
 roll{投擲:cc 80 投擲;空手 cc 50;}
 
+// state 可以進行增減
+// notes 文字筆記
+// roll 擲骰指令
+============
+顯示SHOW 功能:
 
-顯示: 
+.ch show (顯示 名字 state 和roll) 
+.ch shows  (顯示 名字 state,notes 和roll)
+.ch show notes (顯示 名字 和notes)
+
+
 角色名字
 HP: 5/5 MP: 3/3 SAN: 50/90
 -------
@@ -36,6 +46,9 @@ HP: 5/5 MP: 3/3 SAN: 50/90
 -------
 投擲 cc 80 投擲 
 空手 cc 50
+======
+
+功能 使用角色卡的state 和notes
 
 .ch HP -5如果HP是數字 自動減5
 .ch HP +5 +5 如果HP是數字 自動加5
