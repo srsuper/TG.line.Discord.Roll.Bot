@@ -23,7 +23,7 @@ try {
 
 .ch add 的輸入格式,用來增建角色卡
 .ch add 角色名字
-state[HP:5 5;MP:3;SAN:50 99;]
+state[HP:5 5;MP:3 3;SAN:50 99;護甲:6;]
 notes[筆記:SAD;心靈支柱: 特質]
 roll{投擲:cc 80 投擲;空手 cc 50;}
 
@@ -39,7 +39,7 @@ roll{投擲:cc 80 投擲;空手 cc 50;}
 
 
 角色名字
-HP: 5/5 MP: 3/3 SAN: 50/90
+HP: 5/5 MP: 3/3 SAN: 50/90 護甲: 6
 -------
 筆記: SAD
 心靈支柱: 特質
@@ -50,11 +50,22 @@ HP: 5/5 MP: 3/3 SAN: 50/90
 
 功能 使用角色卡的state 和notes
 
-.ch HP -5如果HP是數字 自動減5
-.ch HP +5 +5 如果HP是數字 自動加5
-.ch HP null 會把內容清空
-.ch HP set 10 直接把現在值變成10
-.ch HP set 10 20 直接把現在值變成10 最大值變成20
+.ch HP MP 顯示該內容 
+HP 5/5 MP 3/3  
+
+.ch HP -5 如果HP是State 自動減5 
+.ch HP +5  如果HP是State 自動加5 如果是
+.ch HP . +5  如果HP是State 後面的數字加5 變成5/10
+.ch HP +5 +5  如果HP是State 前面和後面的數字加5 變成10/10
+
+.ch set HP  10 直接把現在值變成10
+.ch set HP  10 20 直接把現在值變成10 最大值變成20
+.ch set HP  . 20 直接把現在值變成空白 最大值變成20
+
+.ch 輸出指令 cc 80 投擲 
+在指令中可以加上 +{HP} -{san} 
+在結果中會進行運算。
+===
 
 */
 
@@ -76,7 +87,7 @@ HP: 5/5 MP: 3/3 SAN: 50/90
     }
 
     rollDiceCommand = function (inputStr, mainMsg, groupid, userid, userrole, botname, displayname, channelid) {
-       
+
         rply.text = '';
         switch (true) {
             case /^help$/i.test(mainMsg[1]) || !mainMsg[1]:
